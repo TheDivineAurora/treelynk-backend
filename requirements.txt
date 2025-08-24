@@ -4,3 +4,5 @@ sqlalchemy
 passlib[bcrypt]
 python-jose[cryptography]
 shortuuid
+python-dotenv
+psycopg2
