@@ -12,5 +12,5 @@ class User(Base):
     email = Column(String, unique = True, index = True, nullable = False)
     hashed_password = Column(String, nullable = False)
     
-    pages = relationship("User", back_populates = "owner")
+    pages = relationship("Page", back_populates = "owner")
 

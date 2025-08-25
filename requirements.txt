@@ -6,3 +6,5 @@ python-jose[cryptography]
 shortuuid
 python-dotenv
 psycopg2
+pydantic
+email-validator
