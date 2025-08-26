@@ -7,7 +7,8 @@ class Analytics(Base):
 
     id = Column(Integer, primary_key = True, index = True)
     ip_address = Column(String, nullable = True)
+    user_agent = Column(String, nullable = True)
     timestamp = Column(DateTime(timezone = True), server_default = func.now())
 
-    link_id = Column(Integer, ForeignKey = "links.id")
+    link_id = Column(Integer, ForeignKey("links.id"))
     link = relationship("Link", back_populates = "analytics")

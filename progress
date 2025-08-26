@@ -1,10 +1,22 @@
-1. create schemas, pydantic validation or python way u can sqlalchemy
-2. create designated routers 
-3. learn about dependecy and implement it
-4. Implement auth - sign-up, sign-in
-7. Test using swagger and add docss   
-5. Write all the CRUD logic for pages - links - users - analytics
-6. Write special logic APIs
-
+1. create schemas, pydantic validation or python way u can sqlalchemy - done
+2. create designated routers - done
+3. learn about dependecy and implement it - done
+4. Implement auth - sign-up, sign-in - done
+7. Test using swagger and add docss - auth tested, pages pending, analytics pending, links pending
+5. Write all the CRUD logic for pages - links - users - analytics - done
+6. Write special logic APIs - (redirect logic) done
 
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+flows to test
+Auth: signup → login → me → logout [DONE]
+(unauthorized access & owner restrictions too) [DONE]
+
+Pages: create → list all → get → update → delete [DONE]
+
+Links: create → list all → update → delete [DONE]
+
+Redirect: visit short link → check analytics [DONE]
+
+Analytics: raw logs [DONE]
+

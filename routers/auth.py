@@ -6,18 +6,12 @@ from core.security import (
     create_access_token, create_refresh_token,
     decode_access_token
 )
+from core.deps import get_db
 from models.user import User
 from schemas.user import UserSignUp, UserSignIn, TokenResponse, UserResponse
 from datetime import timedelta
 
-router = APIRouter()
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+router = APIRouter(prefix = "/auth", tags = ["Auth"])
 
 @router.post("/signup", response_model = UserResponse)
 def signup(user: UserSignUp, db: Session = Depends(get_db)):

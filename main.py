@@ -2,8 +2,9 @@ from fastapi import FastAPI
 from contextlib import asynccontextmanager
 from core.database import engine, Base
 from sqlalchemy import text
-from routers import auth
-Base.metadata.create_all(bind=engine)
+from routers import auth, pages, links, analytics, redirect
+
+Base.metadata.create_all(bind = engine)
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -17,7 +18,11 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan = lifespan)
 
-app.include_router(auth.router, prefix = "/auth", tags = ["Auth"])
+app.include_router(auth.router)
+app.include_router(pages.router)
+app.include_router(links.router)
+app.include_router(analytics.router)
+app.include_router(redirect.router)
 
 @app.get("/")
 def root():
