@@ -1,4 +1,5 @@
-📌 Treelynk API Routes
+**REST API for Treelynk Page**
+
 🔑 Auth
 
 POST /auth/signup → Register a new user
