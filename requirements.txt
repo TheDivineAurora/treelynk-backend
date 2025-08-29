@@ -9,3 +9,4 @@ psycopg2
 pydantic
 email-validator
 bcrypt
+gunicorn
