@@ -44,8 +44,8 @@ def login(user: UserSignIn, db: Session = Depends(get_db), response: Response = 
     access_token = create_access_token({"sub": str(db_user.id)})
     refresh_token = create_refresh_token({"sub": str(db_user.id)})
 
-    response.set_cookie("access_token", value = access_token, httponly=True, secure = True, max_age=1800, samesite="lax")
-    response.set_cookie("refresh_token", value = refresh_token, httponly=True, secure = True, max_age=604800, samesite="lax")
+    response.set_cookie("access_token", value = access_token, httponly=True, secure = True, max_age=1800, samesite="none")
+    response.set_cookie("refresh_token", value = refresh_token, httponly=True, secure = True, max_age=604800, samesite="none")
     return {"message": "Sign In successful"}
 
 @router.get("/me", response_model=UserResponse)
@@ -76,7 +76,7 @@ def refresh(request: Request, response: Response):
         raise HTTPException(401, "Invalid refresh token")
 
     new_access = create_access_token({"sub": payload.get("sub")})
-    response.set_cookie("access_token", value = new_access, httponly=True, secure = True, max_age=1800, samesite="lax")
+    response.set_cookie("access_token", value = new_access, httponly=True, secure = True, max_age=1800, samesite="none")
 
     return {"message": "Access token refreshed"}
 
